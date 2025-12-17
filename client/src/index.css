@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom Fonts */
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  /* Digital Architect Theme - Dark Mode Default */
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  
+  --card: #252525;
+  --card-foreground: #ffffff;
+  
+  --popover: #252525;
+  --popover-foreground: #ffffff;
+  
+  /* Neon Green Primary */
+  --primary: #00ff9d;
+  --primary-foreground: #000000;
+  
+  /* Dark Grey Secondary */
+  --secondary: #333333;
+  --secondary-foreground: #ffffff;
+  
+  --muted: #333333;
+  --muted-foreground: #a0a0a0;
+  
+  /* Cyan Accent */
+  --accent: #00f0ff;
+  --accent-foreground: #000000;
+  
+  --destructive: #ff0055;
+  --destructive-foreground: #ffffff;
+  
+  --border: #404040;
+  --input: #404040;
+  --ring: #00ff9d;
+  
+  --radius: 0px; /* Brutalist sharp corners */
+  
+  --chart-1: #00ff9d; /* Green */
+  --chart-2: #00f0ff; /* Cyan */
+  --chart-3: #ff00ff; /* Magenta */
+  --chart-4: #ffff00; /* Yellow */
+  --chart-5: #ffffff; /* White */
+  
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00ff9d;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #333333;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #404040;
+  --sidebar-ring: #00ff9d;
+}
+
+.dark {
+  /* Same as root since we are enforcing dark mode */
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --card: #252525;
+  --card-foreground: #ffffff;
+  --popover: #252525;
+  --popover-foreground: #ffffff;
+  --primary: #00ff9d;
+  --primary-foreground: #000000;
+  --secondary: #333333;
+  --secondary-foreground: #ffffff;
+  --muted: #333333;
+  --muted-foreground: #a0a0a0;
+  --accent: #00f0ff;
+  --accent-foreground: #000000;
+  --destructive: #ff0055;
+  --destructive-foreground: #ffffff;
+  --border: #404040;
+  --input: #404040;
+  --ring: #00ff9d;
+  --chart-1: #00ff9d;
+  --chart-2: #00f0ff;
+  --chart-3: #ff00ff;
+  --chart-4: #ffff00;
+  --chart-5: #ffffff;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00ff9d;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #333333;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #404040;
+  --sidebar-ring: #00ff9d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: 
+      linear-gradient(to right, #2a2a2a 1px, transparent 1px),
+      linear-gradient(to bottom, #2a2a2a 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono font-bold tracking-tight;
+  }
+  code, pre {
+    @apply font-mono;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #404040;
+    border: 2px solid #1a1a1a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ff9d;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1400px; /* Wider container for bento grid */
+    }
+  }
+  
+  /* Digital Architect Components */
+  .tech-card {
+    @apply bg-card border border-border p-6 relative overflow-hidden transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_rgba(0,255,157,0.2)];
+  }
+  
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  
+  .tech-card:hover::before {
+    transform: translateX(100%);
+  }
+  
+  .tech-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 border text-xs font-mono font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  .glitch-text {
+    position: relative;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+  }
+  
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00ffff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+  }
+  
+  @keyframes glitch-anim-1 {
+    0% { clip: rect(30px, 9999px, 10px, 0); }
+    5% { clip: rect(70px, 9999px, 90px, 0); }
+    10% { clip: rect(20px, 9999px, 60px, 0); }
+    15% { clip: rect(80px, 9999px, 5px, 0); }
+    20% { clip: rect(10px, 9999px, 40px, 0); }
+    100% { clip: rect(50px, 9999px, 30px, 0); }
+  }
+  
+  @keyframes glitch-anim-2 {
+    0% { clip: rect(10px, 9999px, 80px, 0); }
+    5% { clip: rect(50px, 9999px, 20px, 0); }
+    10% { clip: rect(90px, 9999px, 10px, 0); }
+    15% { clip: rect(30px, 9999px, 60px, 0); }
+    20% { clip: rect(60px, 9999px, 50px, 0); }
+    100% { clip: rect(20px, 9999px, 90px, 0); }
+  }
+}
