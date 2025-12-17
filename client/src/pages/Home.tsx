@@ -48,11 +48,11 @@ export default function Home() {
       {/* Mobile Header */}
       <header className="md:hidden border-b border-border bg-card p-4 flex justify-between items-center sticky top-0 z-50">
         <div className="font-mono font-bold text-lg text-primary">SRP x SVV</div>
-        <a href="/project_technologies_explained.pdf" download>
+        {/*<a href="/project_technologies_explained.pdf" download>
           <Button variant="outline" size="sm">
             <Download className="mr-2 h-4 w-4" /> PDF
           </Button>
-        </a>
+        </a>*/}
       </header>
 
       <main className="flex-1 md:pl-16">
@@ -77,11 +77,11 @@ export default function Home() {
                 <Button onClick={() => scrollToSection("backend")} className="bg-primary text-primary-foreground hover:bg-primary/90 font-mono">
                   INITIALIZE_TOUR <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <a href="/project_technologies_explained.pdf" download>
+                {/*<a href="/project_technologies_explained.pdf" download>
                   <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
                     DOWNLOAD_REPORT.PDF
                   </Button>
-                </a>
+                </a>*/}
               </div>
             </div>
             <div className="hidden md:block relative">
