@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, Cloud, Code, Database, Download, Layers, Server, Terminal } from "lucide-react";
+import { ArrowRight, Box, Cloud, Code, Database, Download, Layers, Server, Terminal } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
 
       {/* Mobile Header */}
       <header className="md:hidden border-b border-border bg-card p-4 flex justify-between items-center sticky top-0 z-50">
-        <div className="font-mono font-bold text-lg text-primary">TechStack_Guide</div>
+        <div className="font-mono font-bold text-lg text-primary">SRP x SVV</div>
         <a href="/project_technologies_explained.pdf" download>
           <Button variant="outline" size="sm">
             <Download className="mr-2 h-4 w-4" /> PDF
@@ -66,13 +66,12 @@ export default function Home() {
               <div className="inline-block px-3 py-1 border border-primary text-primary font-mono text-sm bg-primary/10">
                 DROPS_DE_CONHECIMENTO.V3
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter glitch-text" data-text="TECH STACK BLUEPRINT">
-                TECH STACK <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">BLUEPRINT</span>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter glitch-text" data-text="SRP x SVV">
+                SRP x SVV<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">DROPS</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
-                A comprehensive technical deep dive into the architecture powering your application. 
-                From Entity Framework to Blockchain Ledger.
+                O drops V3 tem como intuito destacar as diferenças e semelhanças nas tecnologias utilizadas nos projetos SRP e SVV. Falando sobre algumas tecnologias de back-end, banco de dados, front-end e cloud.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button onClick={() => scrollToSection("backend")} className="bg-primary text-primary-foreground hover:bg-primary/90 font-mono">
@@ -95,12 +94,14 @@ export default function Home() {
                   <span className="ml-2 text-xs">system_status.log</span>
                 </div>
                 <div className="space-y-2">
-                  <p><span className="text-green-500">➜</span> <span className="text-blue-400">Loading</span> core modules...</p>
-                  <p><span className="text-green-500">➜</span> <span className="text-purple-400">Entity Framework 6</span> initialized.</p>
-                  <p><span className="text-green-500">➜</span> <span className="text-yellow-400">Hangfire</span> background jobs active.</p>
-                  <p><span className="text-green-500">➜</span> <span className="text-cyan-400">SQL Ledger</span> integrity verified.</p>
-                  <p><span className="text-green-500">➜</span> <span className="text-pink-400">Bulma CSS</span> styles loaded.</p>
-                  <p><span className="text-green-500">➜</span> System ready.</p>
+                  <p><span className="text-purple-400">➜</span> <span className="text-blue-400">Loading</span> core modules...</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-green-400">Entity Framework 6</span> initialized.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-yellow-400">Hangfire</span> background jobs active.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-red-400">MediatR</span> background jobs active.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-blue-400">NFe/NFSe</span> background jobs active.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-cyan-400">SQL Ledger</span> integrity verified.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-pink-400">PrimeNG</span> styles loaded.</p>
+                  <p><span className="text-purple-500">➜</span> System ready.</p>
                   <p className="animate-pulse">_</p>
                 </div>
               </div>
@@ -132,13 +133,12 @@ export default function Home() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-sm text-muted-foreground">
-                      Bridges the gap between object-oriented code and relational databases. 
-                      Allows working with data using strongly-typed .NET objects (POCOs).
+                      Comunicação entre o banco de dados e o programa mais facilitada, sendo usado para fazer consultas, updates, deletes e atualizações no banco de dados diretamente no backend de forma mais simples.
                     </p>
                     <ul className="space-y-2 text-sm font-mono">
-                      <li className="flex items-center gap-2"><span className="text-primary">✓</span> Automatic Change Tracking</li>
-                      <li className="flex items-center gap-2"><span className="text-primary">✓</span> LINQ Query Support</li>
-                      <li className="flex items-center gap-2"><span className="text-primary">✓</span> Unit of Work Pattern</li>
+                      <li className="flex items-center gap-2"><span className="text-primary">✓</span> Rastreamento Automático de alterações</li>
+                      <li className="flex items-center gap-2"><span className="text-primary">✓</span> LINQ Query</li>
+                      <li className="flex items-center gap-2"><span className="text-primary">✓</span> Code First</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -152,15 +152,52 @@ export default function Home() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-sm text-muted-foreground">
-                      Reliable background processing for .NET applications. Handles fire-and-forget, 
-                      delayed, and recurring tasks without a separate Windows Service.
+                      O Hangfire é uma biblioteca .NET para gerenciamento de tarefas em segundo plano, permitindo agendar e automatizar processos sem travar a aplicação. Ele possui um painel de monitoramento essencial para acompanhar o status das operações e identificar rapidamente falhas ou travamentos de tarefas.
                     </p>
                     <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                      <div className="bg-secondary p-2 border border-border">Fire-and-Forget</div>
-                      <div className="bg-secondary p-2 border border-border">Delayed Jobs</div>
-                      <div className="bg-secondary p-2 border border-border">Recurring (CRON)</div>
-                      <div className="bg-secondary p-2 border border-border">Continuations</div>
+                      <div className="bg-secondary p-2 border border-border">Tarefas agendadas</div>
+                      <div className="bg-secondary p-2 border border-border">Tarefas adiadas</div>
+                      <div className="bg-secondary p-2 border border-border">Tarefas recorrentes (CRON)</div>
+                      <div className="bg-secondary p-2 border border-border">Continuações</div>
                     </div>
+                    <div className="flex flex-wrap gap-6 pt-2">
+                      <a href="https://scapi.sistemacbm.com/hangfire" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
+                          OPEN_SRP_HANGFIRE
+                        </Button>
+                      </a>
+                      <a href="https://api.sistemavistoria.com.br/svv/hangfire" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
+                          OPEN_SVV_HANGFIRE
+                        </Button>
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="tech-card group">
+                  <CardHeader>
+                    <CardTitle className="text-red-400 flex items-center gap-2">
+                      <Terminal className="h-5 w-5" /> MediatR
+                    </CardTitle>
+                    <CardDescription>Mediator Pattern</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm text-muted-foreground">
+                      MediatR é uma biblioteca .NET para implementação do padrão Mediator, que ajuda a centralizar a lógica de negócios e comunicação entre componentes de uma aplicação. Ele facilita a separação de responsabilidades e promove uma arquitetura mais limpa e testável.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                      <div className="bg-secondary p-2 border border-border">Command / Query</div>
+                      <div className="bg-secondary p-2 border border-border">Handlers</div>
+                      <div className="bg-secondary p-2 border border-border">Pipeline Behaviors</div>
+                      <div className="bg-secondary p-2 border border-border">Publish / Notification</div>
+                    </div>
+
+                    <a href="/assets/files/MediatR.zip" download>
+                      <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
+                        Download_MediatR_Preview.cs
+                      </Button>
+                    </a>
                   </CardContent>
                 </Card>
 
@@ -169,12 +206,25 @@ export default function Home() {
                     <CardTitle className="text-blue-400 flex items-center gap-2">
                       <Layers className="h-5 w-5" /> Zeus
                     </CardTitle>
-                    <CardDescription>NFe Generation Library</CardDescription>
+                    <CardDescription>Biblioteca de Geração de Nota Fiscal Eletrônica</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-sm text-muted-foreground">
-                      Specialized component for Brazilian electronic invoicing (Nota Fiscal Eletrônica). 
-                      Handles XML generation, digital signing, and SEFAZ communication.
+                      Componente especializado para a Nota Fiscal Eletrônica brasileira. Responsável pela geração de XML, assinatura digital e comunicação com a SEFAZ.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="tech-card group">
+                  <CardHeader>
+                    <CardTitle className="text-blue-400 flex items-center gap-2">
+                      <Layers className="h-5 w-5" /> Tecnospeed
+                    </CardTitle>
+                    <CardDescription>Solução para a geração de Nota Fiscal de Serviço Eletrônica</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm text-muted-foreground">
+                      Sistema especializado para a geração de Nota Fiscal de Serviço Eletrônica (NFSe) brasileira. Responsável pela geração de XML, assinatura digital e comunicação com a Prefeitura ou Emissor Nacional.
                     </p>
                   </CardContent>
                 </Card>
@@ -183,7 +233,7 @@ export default function Home() {
               <div className="relative sticky top-24">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-lg blur opacity-20"></div>
                 <div className="relative bg-card border border-border p-2">
-                  <img src="/images/backend-tech.png" alt="Backend Architecture" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500" />
+                  <img src="/assets/images/backend-tech.png" alt="Backend Architecture" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500" />
                   <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md border border-primary/50 p-4 font-mono text-xs">
                     <div className="flex justify-between mb-2">
                       <span className="text-primary">STATUS: ONLINE</span>
@@ -199,7 +249,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Database Section */}
+        {/* Database Section SRP*/}
         <section id="database" className="py-24 border-b border-border bg-card/30">
           <div className="container">
             <div className="flex items-center gap-4 mb-12">
@@ -207,7 +257,7 @@ export default function Home() {
                 <Database size={32} />
               </div>
               <div>
-                <h2 className="text-3xl font-bold">DATABASE LAYER</h2>
+                <h2 className="text-3xl font-bold">Banco de Dados</h2>
                 <p className="text-muted-foreground font-mono">SQL Server / Blockchain</p>
               </div>
             </div>
@@ -218,92 +268,111 @@ export default function Home() {
                 <TabsTrigger value="procedures" className="data-[state=active]:bg-primary data-[state=active]:text-black font-mono">STORED_PROCEDURES</TabsTrigger>
                 <TabsTrigger value="views" className="data-[state=active]:bg-primary data-[state=active]:text-black font-mono">SQL_VIEWS</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="ledger" className="space-y-8">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-cyan-400">Tamper-Evident Data</h3>
+                    <h3 className="text-2xl font-bold text-cyan-400">Dados à prova de adulteração</h3>
                     <p className="text-muted-foreground">
-                      SQL Server Ledger brings the power of blockchain to relational databases. 
-                      It creates an immutable record of data modifications, protecting against 
-                      tampering by high-privileged users.
+                      O Ledger com Blockchain é usado para garantir a integridade de suas transações dados sensíveis. Ele fornece um registro de auditoria verificável de todas as alterações feitas no banco de dados, que pode ser usado para detectar e prevenir fraudes, bem como para cumprir os requisitos regulatórios.
                     </p>
                     <div className="space-y-4">
                       <div className="flex items-start gap-4 p-4 border border-border bg-secondary/50">
                         <div className="mt-1 text-cyan-500">01</div>
                         <div>
                           <h4 className="font-bold">Updatable Ledger Tables</h4>
-                          <p className="text-sm text-muted-foreground">Allows updates/deletes but preserves full history.</p>
+                          <p className="text-sm text-muted-foreground">Permite atualizar e excluir linhas, preservando um histórico completo de todas as alterações.</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-4 p-4 border border-border bg-secondary/50">
                         <div className="mt-1 text-cyan-500">02</div>
                         <div>
                           <h4 className="font-bold">Append-Only Ledger Tables</h4>
-                          <p className="text-sm text-muted-foreground">Blocks updates/deletes entirely for maximum security.</p>
+                          <p className="text-sm text-muted-foreground">Permitir apenas a inserção de novas linhas, proporcionando um nível ainda maior de proteção contra adulteração.</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="border border-border p-2 bg-black">
-                    <img src="/images/database-tech.png" alt="Blockchain Database" className="w-full h-auto" />
+                    <img src="assets/images/database-tech.png" alt="Blockchain Database" className="w-full h-auto" />
                   </div>
                 </div>
               </TabsContent>
-              
+
               <TabsContent value="procedures">
                 <Card className="bg-secondary/20 border-border">
                   <CardHeader>
-                    <CardTitle>Pre-compiled Execution</CardTitle>
-                    <CardDescription>Encapsulated business logic for performance and security</CardDescription>
+                    <CardTitle>Procedimentos Armazenados</CardTitle>
+                    <CardDescription>Encapsulamento de lógica de negócios para melhor desempenho e segurança</CardDescription>
                   </CardHeader>
                   <CardContent className="grid md:grid-cols-3 gap-6">
                     <div className="p-4 border border-border bg-card hover:border-primary transition-colors">
-                      <h4 className="font-bold mb-2 text-primary">Security</h4>
-                      <p className="text-sm text-muted-foreground">Prevents SQL injection and controls data access permissions.</p>
+                      <h4 className="font-bold mb-2 text-primary">Segurança</h4>
+                      <p className="text-sm text-muted-foreground">Previne SQL injection e controles de permissão de acesso a dados.</p>
                     </div>
                     <div className="p-4 border border-border bg-card hover:border-primary transition-colors">
                       <h4 className="font-bold mb-2 text-primary">Performance</h4>
-                      <p className="text-sm text-muted-foreground">Reduced network traffic and pre-compiled execution plans.</p>
+                      <p className="text-sm text-muted-foreground">Redução de tráfego de rede e planos de execução pré-compilados.</p>
                     </div>
                     <div className="p-4 border border-border bg-card hover:border-primary transition-colors">
-                      <h4 className="font-bold mb-2 text-primary">Maintainability</h4>
-                      <p className="text-sm text-muted-foreground">Centralized logic that can be updated without redeploying apps.</p>
+                      <h4 className="font-bold mb-2 text-primary">Manutenibilidade</h4>
+                      <p className="text-sm text-muted-foreground">Centralizada que pode ser atualizada sem reimplantar apps.</p>
                     </div>
+
+                    <a href="/assets/files/CriarDetranAcesso_SP.sql" download>
+                      <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
+                        Download_Procedure.sql
+                      </Button>
+                    </a>
                   </CardContent>
                 </Card>
               </TabsContent>
-              
+
               <TabsContent value="views">
                 <Card className="bg-secondary/20 border-border">
                   <CardHeader>
-                    <CardTitle>Virtual Tables</CardTitle>
-                    <CardDescription>Simplified data access and abstraction</CardDescription>
+                    <CardTitle>Tabelas Virtuais</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-8">
-                      <ul className="space-y-4">
-                        <li className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-cyan-500"></div>
-                          <span>Simplify complex joins and calculations</span>
-                        </li>
-                        <li className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-cyan-500"></div>
-                          <span>Restrict access to specific columns/rows</span>
-                        </li>
-                        <li className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-cyan-500"></div>
-                          <span>Present data in specific formats for reporting</span>
-                        </li>
-                      </ul>
-                      <div className="font-mono text-xs bg-black p-4 border border-border text-green-400">
-                        <p>CREATE VIEW v_SalesSummary AS</p>
+                      <div className="space-y-6">
+                        <CardDescription className="text-base">
+                          As view são tabelas virtuais baseadas no conjunto de resultados de uma consulta SQL.
+                          Elas fornecem uma maneira de simplificar consultas complexas, restringir o acesso aos dados
+                          e apresentar os dados em um formato mais amigável ao usuário.
+                        </CardDescription>
+                        <ul className="space-y-4">
+                          <li className="flex items-center gap-3">
+                            <div className="w-2 h-2 bg-cyan-500"></div>
+                            <span>Abstração de complexidade de joins e cálculos</span>
+                          </li>
+                          <li className="flex items-center gap-3">
+                            <div className="w-2 h-2 bg-cyan-500"></div>
+                            <span>Restrição de acesso a colunas/linhas específicas</span>
+                          </li>
+                          <li className="flex items-center gap-3">
+                            <div className="w-2 h-2 bg-cyan-500"></div>
+                            <span>Presentação de dados em formatos específicos para relatórios</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="font-mono text-xs bg-black p-4 border border-border text-green-400 overflow-x-auto">
                         <p>SELECT</p>
-                        <p className="pl-4">c.CustomerName,</p>
-                        <p className="pl-4">SUM(o.TotalAmount) as TotalSales</p>
-                        <p>FROM Customers c</p>
-                        <p>JOIN Orders o ON c.Id = o.CustomerId</p>
-                        <p>GROUP BY c.CustomerName;</p>
+                        <p className="pl-4">TOP 1000</p>
+                        <p className="pl-4">EM.CpfCnpj AS CpfCnpjAlteracao,</p>
+                        <p className="pl-4">COALESCE(NULLIF(EM.NomeFantasia, ''), NULLIF(EM.RazaoSocial, ''), EM.Nome) AS NomeAlteracao,</p>
+                        <p className="pl-4">U.Nome AS Usuario,</p>
+                        <p className="pl-4">U.CpfCnpj AS CpfUsuario,</p>
+                        <p className="pl-4">LG.Tipo AS TipoOperacao,</p>
+                        <p className="pl-4">LG.Identificador,</p>
+                        <p className="pl-4">LG.ValorNovo,</p>
+                        <p className="pl-4">LG.UltimaAtualizacao AS Data</p>
+                        <p>FROM LogGeral LG</p>
+                        <p className="pl-4">INNER JOIN Pessoa EM</p>
+                        <p className="pl-8">ON LG.Empresa_Id = EM.Id</p>
+                        <p className="pl-4">INNER JOIN Pessoa U</p>
+                        <p className="pl-8">ON LG.Usuario_Id = U.Usuario_Id</p>
+                        <p>ORDER BY LG.UltimaAtualizacao DESC</p>
                       </div>
                     </div>
                   </CardContent>
@@ -323,111 +392,158 @@ export default function Home() {
                     <Layers size={32} />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold">FRONT-END INTERFACE</h2>
-                    <p className="text-muted-foreground font-mono">Bulma CSS Framework</p>
+                    <h2 className="text-3xl font-bold">FRONT-END</h2>
+                    <p className="text-muted-foreground font-mono">PrimeNG Framework</p>
                   </div>
                 </div>
-                
+
                 <p className="text-lg text-muted-foreground">
-                  A modern, mobile-first interface built with Bulma. Based on Flexbox, 
-                  it provides a responsive grid system and modular components without 
-                  JavaScript dependencies.
+                  PrimeNG é uma biblioteca de componentes UI para Angular focada em
+                  produtividade. Ele fornece uma grande variedade de componentes prontos,
+                  como DataTable, Dialog, Calendar e Dropdown, todos pensados para uso
+                  em aplicações reais e corporativas.
                 </p>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 border border-border bg-card hover:bg-pink-500/5 transition-colors">
-                    <h4 className="font-bold text-pink-400 mb-1">Modular</h4>
-                    <p className="text-xs text-muted-foreground">Import only what you need</p>
+                    <h4 className="font-bold text-pink-400 mb-1">Componentes Prontos</h4>
+                    <p className="text-xs text-muted-foreground">
+                      Tabelas, formulários, dialogs, menus e gráficos
+                    </p>
                   </div>
+
                   <div className="p-4 border border-border bg-card hover:bg-pink-500/5 transition-colors">
-                    <h4 className="font-bold text-pink-400 mb-1">Responsive</h4>
-                    <p className="text-xs text-muted-foreground">Mobile-first Flexbox grid</p>
+                    <h4 className="font-bold text-pink-400 mb-1">Angular Nativo</h4>
+                    <p className="text-xs text-muted-foreground">
+                      Integração direta com Angular e Reactive Forms
+                    </p>
                   </div>
+
                   <div className="p-4 border border-border bg-card hover:bg-pink-500/5 transition-colors">
-                    <h4 className="font-bold text-pink-400 mb-1">No JS</h4>
-                    <p className="text-xs text-muted-foreground">Pure CSS framework</p>
+                    <h4 className="font-bold text-pink-400 mb-1">Temas & Layout</h4>
+                    <p className="text-xs text-muted-foreground">
+                      Sistema de temas, PrimeFlex e dark mode
+                    </p>
                   </div>
+
                   <div className="p-4 border border-border bg-card hover:bg-pink-500/5 transition-colors">
-                    <h4 className="font-bold text-pink-400 mb-1">Modern</h4>
-                    <p className="text-xs text-muted-foreground">Clean, readable syntax</p>
+                    <h4 className="font-bold text-pink-400 mb-1">Produtividade</h4>
+                    <p className="text-xs text-muted-foreground">
+                      Menos código manual e mais velocidade no desenvolvimento
+                    </p>
                   </div>
+                  <a href="https://primeng.org" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
+                      OPEN_PRIMENG
+                    </Button>
+                  </a>
                 </div>
               </div>
-              
+
               <div className="md:w-1/2 relative">
                 <div className="absolute -inset-4 bg-pink-500/20 blur-xl rounded-full opacity-20"></div>
-                <img src="/images/frontend-tech.png" alt="Frontend UI" className="relative z-10 w-full border border-border bg-card p-2" />
+                <img src="/assets/images/frontend-tech.png" alt="Frontend UI" className="relative z-10 w-full border border-border bg-card p-2" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Cloud Section */}
-        <section id="cloud" className="py-24 bg-card/30">
+        <section id="cloud" className="py-24 bg-card/30 border-b border-border">
           <div className="container">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center justify-center p-3 bg-white/10 border border-white/20 text-white mb-6 rounded-full">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="p-3 bg-blue-500/10 border border-blue-500 text-blue-500">
                 <Cloud size={32} />
               </div>
-              <h2 className="text-3xl font-bold mb-4">CLOUD INFRASTRUCTURE</h2>
-              <p className="text-muted-foreground">
-                Hosted on a scalable environment powered by IIS and automated by Windows Task Scheduler.
-              </p>
+              <div>
+                <h2 className="text-3xl font-bold">CLOUD INFRASTRUCTURE</h2>
+                <p className="text-muted-foreground font-mono">IIS / Docker / Task Scheduler</p>
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <Card className="tech-card bg-transparent">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <Server className="text-white" /> IIS Web Server
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Microsoft's flexible, general-purpose web server. Provides a secure, 
-                    easy-to-manage platform for hosting web applications and services.
-                  </p>
-                  <div className="h-32 bg-black/50 border border-border p-4 font-mono text-xs text-green-400 overflow-hidden">
-                    <p>Server: Microsoft-IIS/10.0</p>
-                    <p>X-Powered-By: ASP.NET</p>
-                    <p>Date: {new Date().toUTCString()}</p>
-                    <p>Connection: keep-alive</p>
-                    <p>Content-Length: 1452</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div className="space-y-6">
+                <Card className="tech-card bg-transparent">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-blue-400">
+                      <Server className="h-5 w-5" /> IIS Web Server
+                    </CardTitle>
+                    <CardDescription>Servidor Web da Microsoft flexível e seguro</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Plataforma fácil de gerenciar para hospedar aplicativos e serviços da Web. Oferece recursos avançados de segurança e isolamento de aplicações.
+                    </p>
+                    <div className="h-32 bg-black/50 border border-border p-4 font-mono text-xs text-green-400 overflow-hidden">
+                      <p>Server: Microsoft-IIS/10.0</p>
+                      <p>X-Powered-By: ASP.NET</p>
+                      <p>Date: {new Date().toUTCString()}</p>
+                      <p>Connection: keep-alive</p>
+                      <p>Content-Length: 1452</p>
+                    </div>
+                  </CardContent>
+                </Card>
 
-              <Card className="tech-card bg-transparent">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <Terminal className="text-white" /> Task Scheduler
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Automates routine tasks on the server. Triggers actions based on 
-                    specific times, system events, or operational states.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between p-2 border border-border bg-secondary/30">
-                      <span className="text-xs font-mono">Backup_DB.bat</span>
-                      <span className="text-xs text-green-500">02:00 AM</span>
+                <Card className="tech-card bg-transparent">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-blue-500">
+                      <Box className="h-5 w-5" /> Docker
+                    </CardTitle>
+                    <CardDescription>Containerização de Aplicações</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Plataforma para desenvolver, enviar e executar aplicações em containers. Garante que o software funcione sempre da mesma forma, independentemente do ambiente.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                      <div className="bg-secondary p-2 border border-border">Isolamento</div>
+                      <div className="bg-secondary p-2 border border-border">Portabilidade</div>
+                      <div className="bg-secondary p-2 border border-border">Escalabilidade</div>
+                      <div className="bg-secondary p-2 border border-border">Eficiência</div>
                     </div>
-                    <div className="flex items-center justify-between p-2 border border-border bg-secondary/30">
-                      <span className="text-xs font-mono">Sync_Logs.ps1</span>
-                      <span className="text-xs text-green-500">Every 1h</span>
+                  </CardContent>
+                </Card>
+
+                <Card className="tech-card bg-transparent">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-yellow-500">
+                      <Terminal className="h-5 w-5" /> Task Scheduler
+                    </CardTitle>
+                    <CardDescription>Automação de Tarefas do Windows</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Automatiza tarefas rotineiras no servidor. Aciona ações baseadas em horários específicos, eventos do sistema ou estados operacionais.
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between p-2 border border-border bg-secondary/30">
+                        <span className="text-xs font-mono">Backup_DB.bat</span>
+                        <span className="text-xs text-green-500">02:00 AM</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 border border-border bg-secondary/30">
+                        <span className="text-xs font-mono">Sync_Logs.ps1</span>
+                        <span className="text-xs text-green-500">One Time</span>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between p-2 border border-border bg-secondary/30">
-                      <span className="text-xs font-mono">Cleanup_Temp.exe</span>
-                      <span className="text-xs text-green-500">Sunday</span>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="relative sticky top-24">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-20"></div>
+                <div className="relative bg-card border border-border p-2">
+                  <img src="/assets/images/cloud-tech.png" alt="Cloud Infrastructure" className="w-full h-auto opacity-90 hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md border border-blue-500/50 p-4 font-mono text-xs">
+                    <div className="flex justify-between mb-2">
+                      <span className="text-blue-400">SERVER STATUS</span>
+                      <span className="text-green-500">HEALTHY</span>
+                    </div>
+                    <div className="h-1 w-full bg-secondary overflow-hidden">
+                      <div className="h-full bg-blue-500 w-full animate-pulse"></div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="mt-16 flex justify-center">
-               <img src="/images/cloud-tech.png" alt="Cloud Infrastructure" className="max-w-md w-full opacity-80 hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -435,19 +551,12 @@ export default function Home() {
         {/* Footer */}
         <footer className="py-12 border-t border-border bg-card text-center">
           <div className="container">
-            <div className="font-mono text-2xl font-bold text-primary mb-4">TECH STACK GUIDE</div>
+            <div className="font-mono text-2xl font-bold text-primary mb-4">SRP X SVV</div>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              Explore data more intuitively, understand trends better, and easily save or share this report.
+              Apresentação referente ao Drops de Conhecimento V3.
             </p>
-            <div className="flex justify-center gap-4">
-              <a href="/project_technologies_explained.pdf" download>
-                <Button variant="outline" className="font-mono">
-                  <Download className="mr-2 h-4 w-4" /> DOWNLOAD FULL REPORT
-                </Button>
-              </a>
-            </div>
             <div className="mt-12 text-xs text-muted-foreground font-mono">
-              GENERATED BY MANUS AI | SYSTEM_ID: 566b1aca
+              CREATED BY TAÍSSA E NATAN
             </div>
           </div>
         </footer>
