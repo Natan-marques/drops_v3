@@ -59,7 +59,7 @@ export default function Home() {
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-border">
           <div className="absolute inset-0 z-0 opacity-20">
-            <img src="/images/hero-background.png" alt="Background" className="w-full h-full object-cover" />
+            <img src="/assets/images/hero-background.png" alt="Background" className="w-full h-full object-cover" />
           </div>
           <div className="container relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
