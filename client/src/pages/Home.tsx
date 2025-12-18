@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, Box, Cloud, Code, Database, Download, Layers, Server, Terminal } from "lucide-react";
+import { ArrowRight, Box, Cloud, Code, Database, ExternalLink, GraduationCap, Layers, Layout, Server, Terminal } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
       {/* Navigation Rail */}
       <nav className="fixed left-0 top-0 h-full w-16 border-r border-border bg-card z-50 hidden md:flex flex-col items-center py-8 gap-8">
         <div className="w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center font-mono font-bold text-xl">
-          TS
+          V3
         </div>
         <div className="flex flex-col gap-6 mt-auto mb-auto">
           <button onClick={() => scrollToSection("hero")} className="p-2 hover:text-primary transition-colors" title="Home">
@@ -37,22 +37,15 @@ export default function Home() {
           <button onClick={() => scrollToSection("cloud")} className="p-2 hover:text-primary transition-colors" title="Cloud">
             <Cloud size={24} />
           </button>
-        </div>
-        <div className="mt-auto">
-          <a href="/project_technologies_explained.pdf" download className="p-2 hover:text-primary transition-colors block" title="Download PDF">
-            <Download size={24} />
-          </a>
+          <button onClick={() => scrollToSection("courses")} className="p-2 hover:text-primary transition-colors" title="Cursos">
+            <GraduationCap size={24} />
+          </button>
         </div>
       </nav>
 
       {/* Mobile Header */}
       <header className="md:hidden border-b border-border bg-card p-4 flex justify-between items-center sticky top-0 z-50">
         <div className="font-mono font-bold text-lg text-primary">SRP x SVV</div>
-        {/*<a href="/project_technologies_explained.pdf" download>
-          <Button variant="outline" size="sm">
-            <Download className="mr-2 h-4 w-4" /> PDF
-          </Button>
-        </a>*/}
       </header>
 
       <main className="flex-1 md:pl-16">
@@ -77,11 +70,6 @@ export default function Home() {
                 <Button onClick={() => scrollToSection("backend")} className="bg-primary text-primary-foreground hover:bg-primary/90 font-mono">
                   INITIALIZE_TOUR <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                {/*<a href="/project_technologies_explained.pdf" download>
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 font-mono">
-                    DOWNLOAD_REPORT.PDF
-                  </Button>
-                </a>*/}
               </div>
             </div>
             <div className="hidden md:block relative">
@@ -544,6 +532,95 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Courses Section */}
+        <section id="courses" className="py-24 bg-background border-b border-border">
+          <div className="container">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="p-3 bg-purple-500/10 border border-purple-500 text-purple-500">
+                <GraduationCap size={32} />
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold">CURSOS RECOMENDADOS</h2>
+                <p className="text-muted-foreground font-mono">Aprofunde seus conhecimentos</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="tech-card group hover:border-purple-500 transition-colors">
+                <CardHeader>
+                  <CardTitle className="text-purple-400 flex items-center gap-2 text-lg">
+                    <Code className="h-4 w-4" /> .NET Web API e Angular
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm text-muted-foreground">
+                    Domine C#, Entity Framework Core, Angular e a arquitetura de APIs RESTful com .NET moderno.
+                  </p>
+                  <a href="https://www.udemy.com/course/angular-dotnetcore-efcore/?couponCode=25BBPMXINACTIVE" target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full border-purple-500/50 text-purple-400 hover:bg-purple-500/10 font-mono text-xs">
+                      VER CURSO <ExternalLink className="ml-2 h-3 w-3" />
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="tech-card group hover:border-cyan-500 transition-colors">
+                <CardHeader>
+                  <CardTitle className="text-cyan-400 flex items-center gap-2 text-lg">
+                    <Database className="h-4 w-4" /> Banco de Dados
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm text-muted-foreground">
+                    Do básico ao avançado: Stored Procedures, Views, Otimização e Segurança de dados.
+                  </p>
+                  <a href="https://www.udemy.com/course/curso-sql-do-zero-ao-avancado/" target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 font-mono text-xs">
+                      VER CURSO <ExternalLink className="ml-2 h-3 w-3" />
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="tech-card group hover:border-red-500 transition-colors">
+                <CardHeader>
+                  <CardTitle className="text-red-400 flex items-center gap-2 text-lg">
+                    <Layout className="h-4 w-4" /> Angular +
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm text-muted-foreground">
+                    Requisições HTTP, Services, Interceptors, Rotas, Forms, Observables, Promises, Etc.
+                  </p>
+                  <a href="https://www.udemy.com/course/super-treinamento-de-angular-16-do-basico-ao-avancado" target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full border-red-500/50 text-red-400 hover:bg-red-500/10 font-mono text-xs">
+                      VER CURSO <ExternalLink className="ml-2 h-3 w-3" />
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="tech-card group hover:border-blue-500 transition-colors">
+                <CardHeader>
+                  <CardTitle className="text-blue-400 flex items-center gap-2 text-lg">
+                    <Cloud className="h-4 w-4" /> Azure
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm text-muted-foreground">
+                    Azure VM, Network, Resource Manager, Monitor, App Service, Backup, Application Insights, Etc.
+                  </p>
+                  <a href="https://www.udemy.com/course/azureinfraestrutura" target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full border-blue-500/50 text-blue-400 hover:bg-blue-500/10 font-mono text-xs">
+                      VER CURSO <ExternalLink className="ml-2 h-3 w-3" />
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
