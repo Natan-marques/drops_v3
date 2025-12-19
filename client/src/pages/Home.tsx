@@ -249,7 +249,7 @@ namespace MeuProjeto.Data.Repositories
         public List<Cliente> GetClientesAtivosPorNome(string nome)
         {
             // Exemplo de consulta LINQ utilizando o Entity Framework 6
-            return _context.Clientes
+            return _context.Query<Clientes>()
                 .Where(c => c.Ativo && c.Nome.Contains(nome))
                 .OrderBy(c => c.Nome)
                 .ToList();
