@@ -93,7 +93,6 @@ export default function Home() {
                   <p><span className="text-purple-500">➜</span> <span className="text-cyan-400">SQL Ledger</span>: Motor de regras financeiras e contábeis.</p>
                   <p><span className="text-purple-500">➜</span> <span className="text-pink-400">PrimeNG</span>: Biblioteca de componentes para interface Angular.</p>
                   <p><span className="text-purple-500">➜</span> System ready.</p>
-                  <p className="animate-pulse">_</p>
                 </div>
               </div>
             </div>
@@ -146,10 +145,10 @@ export default function Home() {
                   <DialogContent className="sm:max-w-4xl max-h-[90vh]">
                     <DialogHeader>
                       <DialogTitle className="text-primary flex items-center gap-2">
-                        <Code className="h-5 w-5" /> Exemplo Entity Framework 6 - Code First
+                        <Code className="h-5 w-5" /> Exemplo Entity Framework 6 - Code First & Repository
                       </DialogTitle>
                       <DialogDescription>
-                        Exemplo de uma entidade Cliente com configuração Fluent API
+                        Exemplo completo de uma entidade, sua configuração Fluent API, contexto e consulta em repositório.
                       </DialogDescription>
                     </DialogHeader>
                     <ScrollArea className="max-h-[70vh] pr-4">
@@ -165,17 +164,11 @@ namespace MeuProjeto.Domain.Entities
     public class Cliente
     {
         public int Id { get; set; }
-        
         public string Nome { get; set; }
-        
         public string Cpf { get; set; }
-        
         public string Endereco { get; set; }
-        
         public string Contato { get; set; }
-        
         public DateTime DataCadastro { get; set; }
-        
         public bool Ativo { get; set; }
     }
 }`}</pre>
@@ -195,47 +188,12 @@ namespace MeuProjeto.Data.Configurations
     {
         public ClienteConfiguration()
         {
-            // Nome da tabela
             ToTable("Clientes");
-
-            // Chave primária
             HasKey(c => c.Id);
-
-            // Propriedade Id
-            Property(c => c.Id)
-                .HasColumnName("Id");
-
-            // Propriedade Nome
-            Property(c => c.Nome)
-                .IsRequired()
-                .HasMaxLength(150)
-                .HasColumnName("Nome");
-
-            // Propriedade Cpf
-            Property(c => c.Cpf)
-                .IsRequired()
-                .HasMaxLength(14)
-                .HasColumnName("Cpf");
-
-            // Propriedade Endereco
-            Property(c => c.Endereco)
-                .HasMaxLength(300)
-                .HasColumnName("Endereco");
-
-            // Propriedade Contato
-            Property(c => c.Contato)
-                .HasMaxLength(50)
-                .HasColumnName("Contato");
-
-            // Propriedade DataCadastro
-            Property(c => c.DataCadastro)
-                .IsRequired()
-                .HasColumnName("DataCadastro");
-
-            // Propriedade Ativo
-            Property(c => c.Ativo)
-                .IsRequired()
-                .HasColumnName("Ativo");
+            Property(c => c.Nome).IsRequired().HasMaxLength(150).HasColumnName("Nome");
+            Property(c => c.Cpf).IsRequired().HasMaxLength(14).HasColumnName("Cpf");
+            Property(c => c.DataCadastro).IsRequired().HasColumnName("DataCadastro");
+            Property(c => c.Ativo).IsRequired().HasColumnName("Ativo");
         }
     }
 }`}</pre>
@@ -254,18 +212,47 @@ namespace MeuProjeto.Data
 {
     public class MeuProjetoContext : DbContext
     {
-        public MeuProjetoContext() : base("DefaultConnection")
-        {
-        }
+        public MeuProjetoContext() : base("DefaultConnection") { }
 
         public DbSet<Cliente> Clientes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // Aplicar configurações
             modelBuilder.Configurations.Add(new ClienteConfiguration());
-
             base.OnModelCreating(modelBuilder);
+        }
+    }
+}`}</pre>
+                          </div>
+                        </div>
+
+                        {/* Repository Query Example */}
+                        <div>
+                          <h4 className="font-bold text-sm mb-2 text-pink-400">🔍 ClienteRepository.cs - Consulta LINQ</h4>
+                          <div className="bg-black/80 border border-border p-4 font-mono text-xs text-pink-400 rounded-md overflow-x-auto">
+                            <pre>{`using System.Collections.Generic;
+using System.Linq;
+using System.Data.Entity;
+using MeuProjeto.Domain.Entities;
+
+namespace MeuProjeto.Data.Repositories
+{
+    public class ClienteRepository
+    {
+        private readonly MeuProjetoContext _context;
+
+        public ClienteRepository(MeuProjetoContext context)
+        {
+            _context = context;
+        }
+
+        public List<Cliente> GetClientesAtivosPorNome(string nome)
+        {
+            // Exemplo de consulta LINQ utilizando o Entity Framework 6
+            return _context.Clientes
+                .Where(c => c.Ativo && c.Nome.Contains(nome))
+                .OrderBy(c => c.Nome)
+                .ToList();
         }
     }
 }`}</pre>
