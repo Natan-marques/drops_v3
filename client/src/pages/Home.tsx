@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowRight, Box, Cloud, Code, Database, ExternalLink, GraduationCap, Layers, Layout, Server, Terminal } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("backend");
+  const [isEntityExampleOpen, setIsEntityExampleOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -83,12 +86,12 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <p><span className="text-purple-400">➜</span> <span className="text-blue-400">Loading</span> core modules...</p>
-                  <p><span className="text-purple-500">➜</span> <span className="text-green-400">Entity Framework 6</span> initialized.</p>
-                  <p><span className="text-purple-500">➜</span> <span className="text-yellow-400">Hangfire</span> background jobs active.</p>
-                  <p><span className="text-purple-500">➜</span> <span className="text-red-400">MediatR</span> background jobs active.</p>
-                  <p><span className="text-purple-500">➜</span> <span className="text-blue-400">NFe/NFSe</span> background jobs active.</p>
-                  <p><span className="text-purple-500">➜</span> <span className="text-cyan-400">SQL Ledger</span> integrity verified.</p>
-                  <p><span className="text-purple-500">➜</span> <span className="text-pink-400">PrimeNG</span> styles loaded.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-green-400">Entity Framework 6</span>: Persistência e mapeamento de dados legados.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-yellow-400">Hangfire</span>: Agendamento e execução de tarefas em background.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-red-400">MediatR</span>: Desacoplamento de lógica via Commands e Queries.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-blue-400">NFe/NFSe</span>: Processamento e mensageria de documentos fiscais.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-cyan-400">SQL Ledger</span>: Motor de regras financeiras e contábeis.</p>
+                  <p><span className="text-purple-500">➜</span> <span className="text-pink-400">PrimeNG</span>: Biblioteca de componentes para interface Angular.</p>
                   <p><span className="text-purple-500">➜</span> System ready.</p>
                   <p className="animate-pulse">_</p>
                 </div>
@@ -128,8 +131,150 @@ export default function Home() {
                       <li className="flex items-center gap-2"><span className="text-primary">✓</span> LINQ Query</li>
                       <li className="flex items-center gap-2"><span className="text-primary">✓</span> Code First</li>
                     </ul>
+                    <Button
+                      variant="outline"
+                      className="border-primary text-primary hover:bg-primary/10 font-mono mt-2"
+                      onClick={() => setIsEntityExampleOpen(true)}
+                    >
+                      OPEN_EXEMPLO
+                    </Button>
                   </CardContent>
                 </Card>
+
+                {/* Modal de Exemplo Entity Framework */}
+                <Dialog open={isEntityExampleOpen} onOpenChange={setIsEntityExampleOpen}>
+                  <DialogContent className="sm:max-w-4xl max-h-[90vh]">
+                    <DialogHeader>
+                      <DialogTitle className="text-primary flex items-center gap-2">
+                        <Code className="h-5 w-5" /> Exemplo Entity Framework 6 - Code First
+                      </DialogTitle>
+                      <DialogDescription>
+                        Exemplo de uma entidade Cliente com configuração Fluent API
+                      </DialogDescription>
+                    </DialogHeader>
+                    <ScrollArea className="max-h-[70vh] pr-4">
+                      <div className="space-y-6">
+                        {/* Classe Cliente */}
+                        <div>
+                          <h4 className="font-bold text-sm mb-2 text-green-400">📄 Cliente.cs - Entidade</h4>
+                          <div className="bg-black/80 border border-border p-4 font-mono text-xs text-green-400 rounded-md overflow-x-auto">
+                            <pre>{`using System;
+
+namespace MeuProjeto.Domain.Entities
+{
+    public class Cliente
+    {
+        public int Id { get; set; }
+        
+        public string Nome { get; set; }
+        
+        public string Cpf { get; set; }
+        
+        public string Endereco { get; set; }
+        
+        public string Contato { get; set; }
+        
+        public DateTime DataCadastro { get; set; }
+        
+        public bool Ativo { get; set; }
+    }
+}`}</pre>
+                          </div>
+                        </div>
+
+                        {/* Configuração Fluent API */}
+                        <div>
+                          <h4 className="font-bold text-sm mb-2 text-yellow-400">⚙️ ClienteConfiguration.cs - Fluent API</h4>
+                          <div className="bg-black/80 border border-border p-4 font-mono text-xs text-yellow-400 rounded-md overflow-x-auto">
+                            <pre>{`using System.Data.Entity.ModelConfiguration;
+using MeuProjeto.Domain.Entities;
+
+namespace MeuProjeto.Data.Configurations
+{
+    public class ClienteConfiguration : EntityTypeConfiguration<Cliente>
+    {
+        public ClienteConfiguration()
+        {
+            // Nome da tabela
+            ToTable("Clientes");
+
+            // Chave primária
+            HasKey(c => c.Id);
+
+            // Propriedade Id
+            Property(c => c.Id)
+                .HasColumnName("Id");
+
+            // Propriedade Nome
+            Property(c => c.Nome)
+                .IsRequired()
+                .HasMaxLength(150)
+                .HasColumnName("Nome");
+
+            // Propriedade Cpf
+            Property(c => c.Cpf)
+                .IsRequired()
+                .HasMaxLength(14)
+                .HasColumnName("Cpf");
+
+            // Propriedade Endereco
+            Property(c => c.Endereco)
+                .HasMaxLength(300)
+                .HasColumnName("Endereco");
+
+            // Propriedade Contato
+            Property(c => c.Contato)
+                .HasMaxLength(50)
+                .HasColumnName("Contato");
+
+            // Propriedade DataCadastro
+            Property(c => c.DataCadastro)
+                .IsRequired()
+                .HasColumnName("DataCadastro");
+
+            // Propriedade Ativo
+            Property(c => c.Ativo)
+                .IsRequired()
+                .HasColumnName("Ativo");
+        }
+    }
+}`}</pre>
+                          </div>
+                        </div>
+
+                        {/* DbContext */}
+                        <div>
+                          <h4 className="font-bold text-sm mb-2 text-cyan-400">🗄️ MeuProjetoContext.cs - DbContext</h4>
+                          <div className="bg-black/80 border border-border p-4 font-mono text-xs text-cyan-400 rounded-md overflow-x-auto">
+                            <pre>{`using System.Data.Entity;
+using MeuProjeto.Data.Configurations;
+using MeuProjeto.Domain.Entities;
+
+namespace MeuProjeto.Data
+{
+    public class MeuProjetoContext : DbContext
+    {
+        public MeuProjetoContext() : base("DefaultConnection")
+        {
+        }
+
+        public DbSet<Cliente> Clientes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Aplicar configurações
+            modelBuilder.Configurations.Add(new ClienteConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+}`}</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </ScrollArea>
+                  </DialogContent>
+                </Dialog>
 
                 <Card className="tech-card group">
                   <CardHeader>
